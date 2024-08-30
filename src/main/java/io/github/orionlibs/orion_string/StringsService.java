@@ -29,6 +29,7 @@ import io.github.orionlibs.orion_string.tasks.IsOnlyAlphabeticalWithHyphensAndSp
 import io.github.orionlibs.orion_string.tasks.IsOnlyAlphabeticalWithHyphensTask;
 import io.github.orionlibs.orion_string.tasks.PermuteStringTask;
 import io.github.orionlibs.orion_string.tasks.PrefixStringTask;
+import io.github.orionlibs.orion_string.tasks.ReplaceControlCharactersTask;
 import io.github.orionlibs.orion_string.tasks.SeparateByStringTask;
 import io.github.orionlibs.orion_string.tasks.ShuffleStringTask;
 import io.github.orionlibs.orion_string.tasks.SurroundWithStringTask;
@@ -482,5 +483,17 @@ public class StringsService
     public static String formatWith2Characters(long value)
     {
         return FormatWith2CharactersTask.run(value);
+    }
+
+
+    public static String replaceControlCharacters(int[] codePoints)
+    {
+        return ReplaceControlCharactersTask.run(codePoints);
+    }
+
+
+    public static String replaceControlCharacters(String str)
+    {
+        return replaceControlCharacters(str.codePoints().toArray());
     }
 }
