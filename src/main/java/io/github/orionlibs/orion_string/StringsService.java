@@ -36,6 +36,10 @@ import io.github.orionlibs.orion_string.tasks.SurroundWithStringTask;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class StringsService
@@ -495,5 +499,40 @@ public class StringsService
     public static String replaceControlCharacters(String str)
     {
         return replaceControlCharacters(str.codePoints().toArray());
+    }
+
+
+    public static List<String> findAll(Pattern pattern, String text)
+    {
+        List<String> allMatches = new ArrayList<>();
+        Matcher matcher = pattern.matcher(text);
+        while(matcher.find())
+        {
+            allMatches.add(matcher.group());
+        }
+        return allMatches;
+    }
+
+
+    public static Map<Integer, Integer> convertCharactersToUnicode()
+    {
+        List<Integer> bs = new ArrayList<>();
+        IntStream.rangeClosed('!', '~').forEach(bs::add);
+        IntStream.rangeClosed('¡', '¬').forEach(bs::add);
+        IntStream.rangeClosed('®', 'ÿ').forEach(bs::add);
+        List<Integer> cs = new ArrayList<>(bs);
+        int n = 0;
+        for(int b = 0; b < 256; ++b)
+        {
+            if(!bs.contains(b))
+            {
+                bs.add(b);
+                cs.add(256 + n);
+                n += 1;
+            }
+        }
+        return IntStream.range(0, bs.size())
+                        .boxed()
+                        .collect(Collectors.toMap(bs::get, cs::get));
     }
 }
