@@ -1,7 +1,7 @@
 package io.github.orionlibs.orion_string.tasks;
 
 import io.github.orionlibs.orion_assert.Assert;
-import io.github.orionlibs.orion_simple_math.RandomNumberGenerationService;
+import io.github.orionlibs.orion_simple_math.random.RandomNumberGenerationService;
 
 public class ShuffleStringTask
 {

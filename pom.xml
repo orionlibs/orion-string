@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.orionlibs</groupId>
     <artifactId>orion-string</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>Orion String</name>
     <description>Java strings library</description>
     <url>https://github.com/orionlibs/orion-string</url>
@@ -236,7 +236,7 @@
         <dependency>
             <groupId>io.github.orionlibs</groupId>
             <artifactId>orion-simple-math</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 
 
